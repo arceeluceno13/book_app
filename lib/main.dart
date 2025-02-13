@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Book App',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.lightBlue,
       ),
       home: const LoginPage(),
     );
@@ -32,7 +32,7 @@ class LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   void _login() {
-    if (_emailController.text == 'cianvergelll@gmail.com' && _passwordController.text == 'ian123') {
+    if (_emailController.text == 'arceeluceno@gmail.com' && _passwordController.text == '123123') {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const HomePage()),
@@ -47,7 +47,7 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Book App'), centerTitle: true,),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(16.0),
@@ -87,7 +87,7 @@ class LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed: _login,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
+                  backgroundColor: Colors.lightBlueAccent,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                 ),
                 child: const Text('Login', style: TextStyle(color: Colors.white)),
@@ -107,7 +107,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Book App Home')),
+      appBar: AppBar(
+        title: const Text('Book App Home'), centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              // Navigate back to the LoginPage
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            },
+          ),
+        ],
+      ),
       body: const Center(child: Text('Welcome to the Book App!')),
     );
   }
